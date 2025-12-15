@@ -14,6 +14,7 @@ function App() {
     .then(data => {
       console.log(data);
       setDisplayName(data.name);
+      setAccountLink(data.html_url);
       setUsername(data.login);
     });
   }, [username]);
