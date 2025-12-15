@@ -26,6 +26,7 @@ function App() {
       <h1>{displayName}</h1>
       <h2>{username}</h2>
       <a href={accountLink}>{accountLink}</a>
+      <img src={avatarUrl} alt="" />
     </div>
   );
 }
