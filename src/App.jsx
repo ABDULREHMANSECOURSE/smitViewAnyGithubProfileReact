@@ -6,6 +6,7 @@ function App() {
   const [displayName, setDisplayName] = useState('');
   const inputRef = useRef(null);
   const [accountLink, setAccountLink] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState(null);
   useEffect(() => {
     if (!username) return;
     fetch(`https://api.github.com/users/${username}`)
