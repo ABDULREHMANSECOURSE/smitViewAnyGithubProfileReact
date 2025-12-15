@@ -7,6 +7,7 @@ function App() {
   const inputRef = useRef(null);
   const [accountLink, setAccountLink] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
+  const [email, setEmail] = useState(null);
   useEffect(() => {
     if (!username) return;
     fetch(`https://api.github.com/users/${username}`)
@@ -25,6 +26,7 @@ function App() {
       <button onClick={() => setUsername(inputRef.current.value)}>Find</button>
       <h1>{displayName}</h1>
       <h2>{username}</h2>
+      <h3>{email}</h3>
       <a href={accountLink}>{accountLink}</a>
       <img src={avatarUrl} alt="" />
     </div>
