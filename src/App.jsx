@@ -15,6 +15,7 @@ function App() {
       console.log(data);
       setDisplayName(data.name);
       setAccountLink(data.html_url);
+      setAvatarUrl(data.avatar_url);
       setUsername(data.login);
     });
   }, [username]);
