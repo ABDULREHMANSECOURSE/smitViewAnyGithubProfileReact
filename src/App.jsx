@@ -5,6 +5,7 @@ function App() {
   const [username, setUsername] = useState('abdulrehmansecourse');
   const [displayName, setDisplayName] = useState('');
   const inputRef = useRef(null);
+  const [accountLink, setAccountLink] = useState(null);
   useEffect(() => {
     if (!username) return;
     fetch(`https://api.github.com/users/${username}`)
