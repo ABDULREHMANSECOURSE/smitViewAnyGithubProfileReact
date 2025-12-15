@@ -27,7 +27,7 @@ function App() {
       <button onClick={() => setUsername(inputRef.current.value)}>Find</button>
       <h1>{displayName}</h1>
       <h2>{username}</h2>
-      <h3>{email}</h3>
+      <h3>Email: {email ? `Email: ${email}` : 'No email provided'}</h3>
       <a href={accountLink}>{accountLink}</a>
       <img src={avatarUrl} alt="" />
     </div>
