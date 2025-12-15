@@ -2,9 +2,9 @@ import './App.css';
 import { useEffect, useState, useRef } from 'react';
 
 function App() {
-  const inputRef = useRef(null);
   const [username, setUsername] = useState('abdulrehmansecourse');
   const [displayName, setDisplayName] = useState('');
+  const inputRef = useRef(null);
   useEffect(() => {
     if (!username) return;
     fetch(`https://api.github.com/users/${username}`)
@@ -12,6 +12,7 @@ function App() {
     .then(data => {
       console.log(data);
       setDisplayName(data.name);
+      setUsername(data.login);
     });
   }, [username]);
   return (
@@ -19,6 +20,7 @@ function App() {
       <input type="text" ref={inputRef} />
       <button onClick={() => setUsername(inputRef.current.value)}>Find</button>
       <h1>{displayName}</h1>
+      <h2>{username}</h2>
     </div>
   );
 }
