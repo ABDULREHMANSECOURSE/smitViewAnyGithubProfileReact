@@ -25,6 +25,7 @@ function App() {
       <button onClick={() => setUsername(inputRef.current.value)}>Find</button>
       <h1>{displayName}</h1>
       <h2>{username}</h2>
+      <a href={accountLink}>{accountLink}</a>
     </div>
   );
 }
