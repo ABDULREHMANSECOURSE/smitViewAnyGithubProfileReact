@@ -18,6 +18,7 @@ function App() {
       setAccountLink(data.html_url);
       setAvatarUrl(data.avatar_url);
       setUsername(data.login);
+      setEmail(data.email);
     });
   }, [username]);
   return (
