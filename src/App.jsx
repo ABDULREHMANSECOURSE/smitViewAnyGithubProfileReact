@@ -8,7 +8,7 @@ function App() {
   const [error, setError] = useState(null);
   function findAccount() {
     if (!inputRef.current.value) {
-      setError('account not found')
+      setError('Please enter a username');
       return;
     } else {
       setError(null);
