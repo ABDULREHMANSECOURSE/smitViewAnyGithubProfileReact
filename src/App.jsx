@@ -6,7 +6,7 @@ function App() {
   const [userData, setUserData] = useState({});
   const [userDetail, setUserDetail] = useState(null);
   const [error, setError] = useState(null);
-
+  
   function findAccount() {
     if (!inputRef.current.value) {
       setError('Please enter a username');
