@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 function App() {
   const inputRef = useRef(null);
   const [userData, setUserData] = useState({});
+  let userDetail;
   const [error, setError] = useState(null);
   function findAccount() {
     if (!inputRef.current.value) {
@@ -18,13 +19,15 @@ function App() {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setUserData(data);
+          userDetail = data;
         });
     }
   }
   useEffect(() => {
-    
-  }, [userData]);
+    if (userDetail) {
+      setUserData(userDetail);
+    }
+  }, [userDetail]);
   return (
     <div>
       <input type="text" ref={inputRef} />
