@@ -5,14 +5,13 @@ function App() {
   const inputRef = useRef(null);
   const [userData, setUserData] = useState({});
   const [userDetail, setUserDetail] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
   
   function findAccount(inputValue) {
     if (!inputValue) {
       setError('Please enter a username');
       return;
     } else {
-      setError(null);
       callApi()
     }
     function callApi() {
@@ -21,7 +20,7 @@ function App() {
         .then(data => {
           console.log(data);
           if (data.message) {
-            setError(data.message);
+            setError(data.message,data.status);
             setUserData({});
             return;
           }
@@ -42,7 +41,7 @@ function App() {
       <h1>{error}</h1>
       <h1>{userData.name}</h1>
       <h2>{userData.login}</h2>
-      {error ? null : <h3>Email: {userData.email ? `Email: ${userData.email}` : 'No email provided'}</h3>}
+      {error === null ? <h3>Email: {userData.email ? `Email: ${userData.email}` : 'No email provided'}</h3> : null}
       <a href={userData.html_url}>{userData.html_url}</a>
       <img src={userData.avatar_url} alt="" />
     </div>
