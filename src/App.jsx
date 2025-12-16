@@ -25,6 +25,7 @@ function App() {
             setUserData({});
             return;
           }
+          setError(null);
           setUserDetail(data);
         });
     }
