@@ -7,8 +7,8 @@ function App() {
   const [userDetail, setUserDetail] = useState(null);
   const [error, setError] = useState(null);
   
-  function findAccount() {
-    if (!inputRef.current.value) {
+  function findAccount(inputValue) {
+    if (!inputValue) {
       setError('Please enter a username');
       return;
     } else {
@@ -16,7 +16,7 @@ function App() {
       callApi()
     }
     function callApi() {
-      fetch(`https://api.github.com/users/${inputRef.current.value}`)
+      fetch(`https://api.github.com/users/${inputValue}`)
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -38,7 +38,7 @@ function App() {
   return (
     <div>
       <input type="text" ref={inputRef} />
-      <button onClick={() => findAccount()}>Find</button>
+      <button onClick={() => findAccount(inputRef.current.value.trim())}>Find</button>
       <h1>{error}</h1>
       <h1>{userData.name}</h1>
       <h2>{userData.login}</h2>
