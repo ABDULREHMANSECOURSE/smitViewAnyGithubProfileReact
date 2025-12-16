@@ -19,6 +19,11 @@ function App() {
         .then(response => response.json())
         .then(data => {
           console.log(data);
+          if (data.message) {
+            setError(data.message);
+            setUserData({});
+            return;
+          }
           userDetail = data;
         });
     }
