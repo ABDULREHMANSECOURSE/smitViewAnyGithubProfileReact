@@ -2,34 +2,39 @@ import './App.css';
 import { useEffect, useState, useRef } from 'react';
 
 function App() {
-  const [username, setUsername] = useState('abdulrehmansecourse');
-  const [displayName, setDisplayName] = useState('');
   const inputRef = useRef(null);
-  const [accountLink, setAccountLink] = useState(null);
-  const [avatarUrl, setAvatarUrl] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [userData, setUserData] = useState({});
+  const [error, setError] = useState(null);
+  function findAccount() {
+    if (!inputRef.current.value) {
+      setError('account not found')
+      return;
+    } else {
+      setError(null);
+      callApi()
+    }
+    function callApi() {
+      fetch(`https://api.github.com/users/${inputRef.current.value}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setUserData(data);
+        });
+    }
+  }
   useEffect(() => {
-    if (!username) return;
-    fetch(`https://api.github.com/users/${username}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setDisplayName(data.name);
-      setAccountLink(data.html_url);
-      setAvatarUrl(data.avatar_url);
-      setUsername(data.login);
-      setEmail(data.email);
-    });
-  }, [username]);
+    
+  }, [userData]);
   return (
     <div>
       <input type="text" ref={inputRef} />
-      <button onClick={() => setUsername(inputRef.current.value)}>Find</button>
-      <h1>{displayName}</h1>
-      <h2>{username}</h2>
-      <h3>Email: {email ? `Email: ${email}` : 'No email provided'}</h3>
-      <a href={accountLink}>{accountLink}</a>
-      <img src={avatarUrl} alt="" />
+      <button onClick={() => findAccount()}>Find</button>
+      <h1>{error}</h1>
+      <h1>{userData.name}</h1>
+      <h2>{userData.login}</h2>
+      <h3>Email: {userData.email ? `Email: ${userData.email}` : 'No email provided'}</h3>
+      <a href={userData.html_url}>{userData.html_url}</a>
+      <img src={userData.avatar_url} alt="" />
     </div>
   );
 }
