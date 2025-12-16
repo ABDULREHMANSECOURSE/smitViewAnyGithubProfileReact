@@ -42,7 +42,7 @@ function App() {
       <h1>{error}</h1>
       <h1>{userData.name}</h1>
       <h2>{userData.login}</h2>
-      <h3>Email: {userData.email ? `Email: ${userData.email}` : 'No email provided'}</h3>
+      {error ? null : <h3>Email: {userData.email ? `Email: ${userData.email}` : 'No email provided'}</h3>}
       <a href={userData.html_url}>{userData.html_url}</a>
       <img src={userData.avatar_url} alt="" />
     </div>
