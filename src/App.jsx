@@ -18,7 +18,7 @@ function App() {
       fetch(`https://api.github.com/users/${inputRef.current.value}`)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          // console.log(data);
           userDetail = data;
         });
     }
