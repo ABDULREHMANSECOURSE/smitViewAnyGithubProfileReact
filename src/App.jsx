@@ -4,8 +4,9 @@ import { useEffect, useState, useRef } from 'react';
 function App() {
   const inputRef = useRef(null);
   const [userData, setUserData] = useState({});
-  let userDetail;
+  const [userDetail, setUserDetail] = useState(null);
   const [error, setError] = useState(null);
+  
   function findAccount() {
     if (!inputRef.current.value) {
       setError('Please enter a username');
@@ -24,7 +25,7 @@ function App() {
             setUserData({});
             return;
           }
-          userDetail = data;
+          setUserDetail(data);
         });
     }
   }
